@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% block title %} Proctor display {% endblock title %}
+
+
+{% block content %}
+<style type="text/css">
+    #bgg {
+        /*                background-image: url(img/light-blue-navbar.jpg);*/
+        /*                background-size: cover;*/
+
+    }
+
+</style>
+<header class="header" id="mynav">
+    <div class="shadow-lg   mb-5 bg-white rounded sticky-top">
+        <nav class="shadow-lg navbar navbar-expand-lg navbar-light bg-light fixed-top" id="heyy">
+
+            <a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Faculty Page</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav" align=center>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" style="color:white; border-bottom-style: solid;border-bottom-color: black; border-radius: 20px;border-bottom-width: medium">Student List <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" style="color:white">M.O.M</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" style="color:white">XXXXXXXX</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}" style="color:white">Logout</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div id="bgg">
+    <div class="container" id="haha">
+
+        <div id="head">
+
+
+            <div align=center>
+                <h4 class="pt-3">
+                    K.J. Somaiya College of Engineering, Mumbai-77<br>
+
+                </h4>
+                <h5>
+                    (Autonomous College Affiliated to University of Mumbai)
+                    <br>
+                    <br>
+                    Student List
+                </h5>
+
+                <br>
+            </div>
+        </div>
+
+
+        <br>
+
+        <div class="container">
+            <div class="row colhead">
+                <div class="col-md-1">
+                    Roll no.
+                </div>
+                <div class="col-md-2 ">Name</div>
+                <div class="col-md-2">Photo</div>
+                <div class="col-md-7">
+                    <span class="center">forms</span>
+                </div>
+            </div>
+
+            <style>
+                .colhead {
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+
+                .profile {
+                    height: 50px;
+                    width: 50px;
+                    border: 2px solid red;
+                }
+
+            </style>
+            {% for pform in x  %}
+            <div class="row">
+                <div class="col-md-1">
+                    {{pform.id}}
+                </div>
+                <div class="col-md-2">{{pform.name_of_student}}</div>
+                <div class="col-md-2 profile">{{imgdict[pform.id]}}</div>
+                <div class="col-md-7">
+                    <!--            <span class="center">forms</span>-->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-info shadow px-5">
+                                <a href="#" style="color: black;">proctor form</a>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary shadow px-5">
+                                <a href="" style="color: black;">internship form</a>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary shadow px-5">
+                                <a href="#" style="color: black;">other form</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% endblock content %}

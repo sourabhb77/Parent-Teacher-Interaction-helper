@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="css/custom.css"> -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+<!-- <style>
+  body{
+    background-color: red;  
+  }
+</style> -->
+<title>Proctor Panel</title>
+</head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg" id="my" style="background-color: #005582;">
+<a class="navbar-brand" href="#" id="my"><h3 style="color: white;font-size: larger;">PROCTOR PANEL</h3></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon">v</span>
+</button>
+<div class="collapse navbar-collapse" id="navbarText">
+<ul class="navbar-nav mr-auto">
+  <li class="nav-item">
+    <a class="nav-link" style="color: white;" href="{{url_for('login')}}">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color: white;" href="{{url_for('logout')}}">Log out</a>
+  </li>
+ 
+  <!-- <li>
+      <div class="dropdown pr-2">
+<button class="btn dropdown-toggle " type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Forms
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Proctor Form</a>
+<a class="dropdown-item" href="#">Internship Form</a>
+<a class="dropdown-item" href="#">Other Forms</a>
+</div>
+</div>
+  </li> -->
+  <!-- <li>
+      <div class="dropdown ">
+<button class="btn dropdown-toggle" type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Forms
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">Proctor Form</a>
+<a class="dropdown-item" href="#">Internship Form</a>
+<a class="dropdown-item" href="#">Other Forms</a>
+</div>
+</div>
+  </li> -->
+</ul>
+
+<div class="dropdown px-2">
+<button class="btn dropdown-toggle" type="button" id="my" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Name of student
+</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<a class="dropdown-item" href="#">View profile</a>
+<a class="dropdown-item" href="#">Edit profile</a>
+<a class="dropdown-item" href="#">View details</a>
+</div>
+</div>
+
+<a class="navbar-brand px-2" href="#" id="profile_photo">
+  <img src="" width="30" height="30" alt="">
+</a>
+</div>
+</nav>
+
+{% with messages= get_flashed_messages(with_categories=true) %}
+{%if messages%}
+    {% for category,message in messages%}
+    <div class="alert alert-{{category}} myMessage">
+        {{message}}
+    </div>
+    {%endfor%}
+{% endif %}
+{% endwith %}
+
+<style>
+    .myMessage{
+        margin: 0;
+        font-weight: bold;
+        
+    }
+</style>
+
+<div class="container" style="border: 1px solid black;border-radius: 7px;">
+
+<div class="row"> 
+<div class="col-md-8" id="column-1">
+   
+
+
+    <div class="row">
+        {% for i in pform %}
+    <div class="card" style=" height:25rem;
+width:33%;">
+    <img class="card-img-top" id="img" src="{{i.photo}}" alt="Card image cap">
+    <div class="card-body">
+        <b>ID: </b>{{i.id}}<br>
+        <b>Name:</b>{{i.name_of_student}}<br>
+        <b>Email ID:</b><span class="stu_mail">{{i.stu_email_id}}</span> <br>
+        <b>Documents:</b> <br>
+        <button class="btn btn-secondary" type="submit">Academics</button>
+        <button class="btn btn-secondary" type="submit">Non-Academics</button><br>
+                <div class="py-1"></div>
+        <div class="form-group form-check" align="center">
+      
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" class="{{i.id}}" onclick="var mail={{ i.stu_email_id }};function showmail(mail){alert(mail);};showmail();">
+            <label class="form-check-label" for="exampleCheck1">Select ID</label>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+    <script>
+      function showmail(mail){
+          // p=[];
+  //     var x = document.getElementsByClassName("");
+  //     p.push(x.textContent);
+      alert(mail);
+  
+  //     var t = document.getElementById("showmailid").textContent;
+  // var y = document.createTextNode(x.textContent);
+  
+  // t.appendChild(y);
+      }
+      // console.log(x.textContent)
+      </script>
+</div>
+
+    
+</div>
+<div class="col-md-4" id="column-2" style="border-left: 1px solid black;">
+    <div class="py-3" align="center">
+        <b>Notifications</b>
+    </div>
+    <div class="form-group">
+
+
+<div style="width:100%;height:250px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;">
+  <div class="chat">
+    <button class="accordion">Notification 1</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, quos.</p>
+    </div>
+    
+    <button class="accordion">Notification 2</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis amet saepe sed quasi minima voluptatum.</p>
+    </div>
+    
+    <button class="accordion">Notification 3</button>
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti minima quia dignissimos vero repudiandae eligendi quam nostrum maiores ducimus rem?  </p>
+    </div>
+  </div>
+    <style>
+    .accordion {
+      background-color: #eee;
+      margin-bottom: 5px;
+      color: #444;
+      cursor: pointer;
+      padding: 7px 0px 7px 0px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+    
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+    .active, .accordion:hover {
+      background-color: #ccc;
+    }
+    
+    /* Style the accordion panel. Note: hidden by default */
+    .panel {
+      padding: 0 10px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+    }
+    </style>
+    <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+    
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+    </script>
+</div>
+<div class="py-3" align="center" style="border-top: solid 1px black;">
+        <b>Request</b>
+    </div>
+<div class="form-group">
+  <form action="/StudentPanel" method="POST">
+    <div class="to" style="border: solid black 1px;padding: 5px;margin-bottom: 5px;">
+      <span style="font-weight: bold;">To : <p id="showmailid"></p> </span>
+    </div>
+
+<!-- <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="proctor@somaiya.edu" name="email"> -->
+<div class="form-group">
+<label for="exampleFormControlTextarea1" style="font-weight: bold;">Compose mail here:</label>
+<textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Type here" name="message"></textarea>
+
+<a href="/sMail">
+  <button class="btn btn-primary" type="submit" id="send_btn">Send </button>
+</a>
+
+<!-- <button class="btn btn-primary" type="submit" id="send_btn">Send </button> -->
+</div>
+</form>
+</div>
+</div>
+
+
+    
+    
+</div>
+</div>
+</div>
+<br>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

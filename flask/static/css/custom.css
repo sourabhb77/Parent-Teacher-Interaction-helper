@@ -1,0 +1,160 @@
+.name img{
+    height: 500px;
+    width: 100%;
+}
+
+#loginbox{
+    background-color: #97ebdb;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+}
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+    z-index: 99999;
+
+}
+
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+select {
+    border-style: solid;
+    border-color: red;
+}
+
+div {
+    color: black;
+}
+
+#photo {
+    border-style: solid;
+    border-color: black;
+    border-width: thin;
+    border-radius: 1px;
+}
+
+#heyy {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #005582;
+                        color: white;
+}
+
+#bgg {
+    background-color: white;
+
+
+}
+
+#haha {
+background-color: #f8f8ff;
+}
+
+
+#carouselExampleIndicators {
+    border-style: solid;
+    border-bottom-width: thick;
+}
+
+#dec {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-radius: 20px;
+    border-color: #b3cdd1;
+}
+
+
+/* .col-sm-8,.col-form-label
+{
+    color:;
+    color:;
+} */
+
+
+#head {
+    background-color: #97ebdb;
+background-image: linear-gradient(45deg, #b3cdd1 0%, #9fa4c4 74%);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+
+
+
+#mynav {
+    color: white !important;
+}
+
+#second {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-radius: 20px;
+    border-color: #b3cdd1;
+}
+
+#third {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-radius: 20px;
+    border-color: #b3cdd1;
+}
+
+#row-1 {
+/*    row-1 is for cresent borders*/
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-radius: 20px;
+    border-color: #b3cdd1;
+}
+
+#info-1{
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+#info-2 {
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+
+#info-3 {
+    color: white;
+}

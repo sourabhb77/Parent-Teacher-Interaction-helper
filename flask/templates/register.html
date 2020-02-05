@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block title %} Register{% endblock title %} 
+
+
+{% block content %}
+      
+      <style type="text/css">
+        #full_except_logo{
+            /* background-image: url(img/background-1.jpg); */
+            /* background-image: url({{url_for('static',filename='img/background-1.jpg')}}); */
+            /* background:linear-gradient(135deg, rgb(59, 72, 175) 0%, rgb(59, 72, 175) 31%,rgb(55, 66, 150) 31%, rgb(55, 66, 150) 46%,rgb(51, 60, 126) 46%, rgb(51, 60, 126) 56%,rgb(48, 54, 101) 56%, rgb(48, 54, 101) 83%,rgb(44, 48, 77) 83%, rgb(44, 48, 77) 93%,rgb(40, 42, 52) 93%, rgb(40, 42, 52) 100%) */
+            background-color: #7f53ac;
+background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+        }
+        #navbarblue{
+                   background-image: url({{url_for('static',filename='img/light-blue-navbar.jpg')}});
+
+            background-size: cover;
+        }
+        
+        #logo_back{
+                    background-color: #7f53ac;
+background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+                }
+        div{
+          color: black;
+        }
+      </style>
+  <div align=center id="logo_back">
+           <img src="{{url_for('static',filename='img/KJSCE-Mumbai-Logo.png')}}">
+           
+       </div>
+       <div id="full_except_logo">
+   <header class="header">
+        <div class="shadow-lg  bg-white " id="navbar" >
+          <nav class="shadow-lg navbar navbar-expand-lg navbar-light  " id="navbarblue" style="height: 60px;
+          width: 100%;" align=center>
+          <!-- <img class="icon" src=""> -->
+      <a class="navbar-brand"  href="{{url_for('login')}}" style="color:white ;font-weight: 1000;a>ho">Student-Proctor-Software</a>
+    </nav>
+    </div>   
+    
+
+    </header>
+    
+    
+    <div id="back">
+<!--    <img src="img/KJSCE-Mumbai-Logo.png">-->
+    
+
+    <div class="container" id="cont">
+
+    <!-- <div class="py-5"></div> -->
+    <!-- <div class="py-5"></div> -->
+    <div class="page-holder d-flex align-items-center">
+ <div class="container">
+        <div class="row align-items-center py-5" align=center>
+          <div class="col-lg-2"></div>
+
+          <div class="col-lg-8 px-lg-4 mb-5 py-5" id="loginbox">
+            <h1 class="text-base text-primary text-uppercase mb-4">WELCOME</h1>
+            <h2 class="mb-4">REGISTER HERE</h2>
+            <p class="text-muted">Enter the following details to register</p>
+
+            <form id="loginForm" method="POST" action="/register" enctype="multipart/form-data" class="mt-4">
+              <div class="form-group mb-4">
+                {{form.id.label(class="table-control-label")}}
+                {{ form.id(class="form-control border border-dark shadow form-control-lg")}}
+                note: <p class="form-control-label">if you are student then add "s" before your roll no</p>
+                <p class="form-control-label">if you are parent then add "g" before your child roll no</p>
+                <p class="form-control-label">if you are proctor then add "p" before your id</pclass="table-control-label">
+
+              </div>
+              <div class="form-group mb-4">
+                {{form.password.label(class="")}}
+                {{ form.password(class="form-control border border-dark shadow form-control-lg ")}}
+              </div>
+              <div class="form-group mb-4">
+                {{form.confirm_password.label(class="")}}
+                {{ form.confirm_password(class="form-control border border-dark shadow form-control-lg ")}}
+              </div>
+              {{ form.submit(class="btn btn-primary shadow px-5")}}
+
+            </form>
+            
+          </div>
+      </div>   
+</div>
+    </div>
+    
+    <div class="container">
+	    <div class="row" id="info-2">
+	        <div class="col-md-12 info border border-secondary rounded my-3" id="info-3">
+            <div class="font-weight-bold" align=center font-size-25>
+            <h3>About K.J Somaiya College of Engineering<br></h3>
+            </div>
+            The K. J. Somaiya College of Engineering (KJSCE) was established in 1983 at Somaiya Vidyavihar, and affiliated with the University of Mumbai. It offers 4 year bachelors degree courses in the departments of Electronics Engineering, Electronics and Telecommunications Engineering, Computer Engineering, Information Technology and Mechanical Engineering. KJSCE is an Autonomous college affiliated to the University of Mumbai spread across approx. 65 acres of posh land and stands among the top 3 engineering colleges in Mumbai.
+	        </div>
+	        <div class="col-md-6   mycarousel">
+	            
+
+	            
+	        </div>
+	    </div>
+	</div>
+    <div class="container my-3 align=center" id="info-1">
+           <div class="font-weight-bold mt-1" align=center >
+            <h3>About this project<br></h3>
+            </div>
+            This website will allow students to easily submit forms like internship form, proctor form, leave application, etc.<br>
+            The proctor will recieve the form once you press submit.<br><br>
+        </div>
+        
+        <p class="mt-5 mb-0 text-gray-400 text-center">
+        Designed by Team DSMD!
+        </p>
+        <br>
+    </div>
+    </div>
+      </div>
+
+    
+    <!-- JavaScript files
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="js/front.js"></script> -->
+     <script>
+
+          
+          // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+             </script> 
+{% endblock content %}

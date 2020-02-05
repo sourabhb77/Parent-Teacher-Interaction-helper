@@ -1,0 +1,423 @@
+{% extends 'base.html' %}
+{% block title %}Internship Form {% endblock title %} 
+
+
+{% block content %}
+<style type="text/css">
+#bgg {
+    /* background-image: url(img/light-blue-navbar.jpg); */
+    /* background-image: url({{url_for('static',filename='img/light-blue-navbar.jpg')}}); */
+background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(157.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgb(36, 121, 196),rgb(136, 50, 37));
+    background-size: cover;
+}
+</style>
+
+
+
+<!-- navbar-->
+<header class="header" id="mynav">
+<div class="shadow-lg   mb-5 bg-white rounded sticky-top">
+<nav class="shadow-lg navbar navbar-expand-lg navbar-light bg-light fixed-top" id="heyy">
+
+    <a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Student Forms </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" align=center>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('proctorForm')}}" style="color:white">Proctor Form <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#" style="color:white; border-bottom-style: solid;border-bottom-color: black; border-radius: 20px;border-bottom-width: medium">Internship Form</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('studentpanel')}}" style="color:white">Student Panel<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#" style="color:white">Leave application</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}" style="color:white">Logout</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+</div>
+</header>
+
+<div id="bgg">
+<div class="container shadow-lg" id="haha">
+<div id="head">
+
+
+    <div align=center>
+        <h4 class="pt-3">
+            K.J. Somaiya College of Engineering, Mumbai-77<br>
+        </h4>
+        <h5>
+            IC-01 Application for Internship
+        </h5>
+        <br>
+    </div>
+</div>
+
+<div class="py-3"></div>
+
+<form method="POST" action="/internshipForm" enctype="multipart/form-data">
+<div id="second">
+
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.semester.label(class="form-control-label")}}
+                {{ form.semester(class="form-control border-0",id="sel1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <p class="form-control-label">
+                        Year
+                </p>
+                <p class="form-control border-0",id="sel1">
+
+                    {{ pform.year}}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-3"></div>
+    <div class="">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="form-group row">
+                        {{form.internship_announcement_number.label(class="form-control-label")}}
+                     {{ form.internship_announcement_number(class="form-control border border-dark",id="sel1")}}
+                    </div>
+                </div>
+                <div class="col-sm-5 form-check">
+                   
+                    {{form.type_of_internship.label(class="form-check-label")}}
+                     {{ form.type_of_internship(class="form-check")}}
+                </div>
+
+
+            </div>
+            <div class="py-3"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<br>
+<div id="row-1">
+    <div class="py-3"></div>
+
+    <div class="row">
+
+
+        <div class="col-sm-12">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <!-- {{form.student_name.label(class="form-control-label")}} -->
+                    <p class="form-control-label">name of student</p>
+                <!-- {{ form.student_name(class="form-control",id="inputPassword")}} -->
+                <p class="form-control",id="inputPassword">
+                    {{ pform.name_of_student}}
+
+                </p>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                    <!-- {{form.id.label(class="form-control-label")}} -->
+                    <p form-control-label>Roll number</p>
+                <!-- {{ form.id(class="form-control",id="inputPassword")}} -->
+                <p class="form-control",id="inputPassword">
+
+                    {{ pform.id}}
+                </p>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                <div class="col-sm-3">
+                    <p class="form-control-label">
+                        Students's address
+                    </p>
+                </div>
+                <div class="col-sm-9 ">
+                    <p class="form-control",id="exampleFormControlTextarea1">
+                        {{pform.pre_add_loc_add_hos_add}}
+                    </p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <p class="form-control-label">
+                            Student's email id
+                        </p>
+                </div>
+                <div class="col-sm-3">
+                    <p class="form-control",id="inputPassword">
+                        {{pform.stu_email_id}}
+                    </p>
+                </div>
+
+                <div class="col-sm-3">
+                    <p class="form-control-label">
+                        Student's mobile number
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <p class="form-control",id="inputPassword">
+                        {{pform.mobile_number}}
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <div class="px-4">
+                <div class="row">
+                    <div class="form-group col-sm-3 sel1">
+                        <p class="form-control-label">
+                            Year
+                    </p>
+                    <p class="form-control border-0",id="sel1">
+    
+                        {{ pform.year}}
+                    </p>
+                    </div>
+
+                    <div class="form-group col-sm-3 sel1">
+                        
+                            {{form.course.label(class="form-control-label")}}
+                {{ form.course(class="form-control",id="sel1")}}
+                    </div>
+
+                    <div class="form-group col-sm-3 sel1">
+                        <p class="form-control-label">
+                            Branch
+                    </p>
+                    <p class="form-control ",id="sel1">
+    
+                        {{ pform.branch}}
+                    </p>
+                    </div>
+
+                    <div class="form-group col-sm-3 sel1">
+                        <p class="form-control-label">
+                            Division
+                    </p>
+                    <p class="form-control ",id="sel1">
+    
+                        {{ pform.division}}
+                    </p>
+                    </div>
+                </div>
+            </div>
+            <div class="py-2"></div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <div class="col-sm-3 form-control-label">
+                    <!-- <p class="form-control-label"> -->
+                            Name of parent/guardian
+                    <!-- </p> -->
+                </div>
+                <div class="col-sm-9 form-control" id="inputPassword">
+                    {{pform.name_of_parent_guardian}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="py-3"></div>
+
+<div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-3 form-control-label">
+                Parent's address
+        </div>
+        <div class="col-sm-9 form-control" id="exampleFormControlTextarea1">
+                {{pform.parent_pre_add_loc_add_hos_add}}
+        </div>
+    </div>
+</div>
+
+
+
+<div class="py-3"></div>
+
+<div class="col-sm-12">
+    <div class="form-group row">
+            <div class="col-sm-3 form-control-label">
+                Parent's Email ID
+            </div>
+        <div class="col-sm-3 form-control" id="inputPassword">
+                {{pform.prt_email_id}}
+        </div>
+
+        <div class="col-sm-3 form-control-label">
+            Parent's mobile number
+        </div>
+    <div class="col-sm-3 form-control" id="inputPassword">
+            {{pform.ptr_mobile_number}}
+    </div>
+
+
+    </div>
+</div>
+
+<br>
+
+
+<div class="py-2"></div>
+<div id="third">
+    <div class="py-3"></div>
+    <h4 align=center>
+        Details of Internship
+    </h4>
+    <div class="py-1"></div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.period.label(class="form-control-label")}}
+                {{ form.period(class="form-control",id="sel1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.year_of_internship.label(class="form-control-label")}}
+                {{ form.year_of_internship(class="form-control",id="sel1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.duration.label(class="form-control-label")}}
+                {{ form.duration(class="form-control",id="exampleInputEmail1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.from_time.label(class="form-control-label")}}
+                {{ form.from_time(class="form-control",id="exampleInputEmail1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.to_time.label(class="form-control-label")}}
+                {{ form.to_time(class="form-control",id="exampleInputEmail1")}}
+            </div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.location.label(class="form-control-label")}}
+                {{ form.location(class="form-control",id="exampleInputEmail1")}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <div class="col-sm-3">
+            {{form.name_of_institute.label(class="form-control-label")}}
+            </div>
+            <div class="col-sm-9">
+            {{ form.name_of_institute(class="form-control",id="inputPassword")}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <div class="col-sm-3">
+            {{form.work_profile.label(class="form-control-label")}}
+            </div>
+            <div class="col-sm-9">
+            {{ form.work_profile(class="form-control",id="exampleFormControlTextarea1")}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <div class="col-sm-3">
+            {{form.name_of_supervisor.label(class="form-control-label")}}
+            </div>
+            <div class="col-sm-9">
+            {{ form.name_of_supervisor(class="form-control",id="exampleFormControlTextarea1")}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <div class="col-sm-3">
+            {{form.stipend.label(class="form-control-label")}}
+            </div>
+            <div class="col-sm-9">
+            {{ form.stipend(class="form-control",id="exampleFormControlTextarea1")}}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group row">
+            <div class="col-sm-7">
+            {{form.days_missed.label(class="form-control-label")}}
+            </div>
+            <div class="col-sm-5">
+            {{ form.days_missed(class="form-control",id="exampleFormControlTextarea1")}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-3"></div>
+<div class="col-sm-12" id="dec">
+    <h4 align=center>
+        <br>
+        Declaration
+    </h4>
+    <div class="form-group row pt-2">
+        <p>
+            I undersignedparent/guardian of <span style="text-decoration: underline; font-weight: bold;">
+                {{ pform.name_of_student}}
+            </span>
+            jointly take the responsibility and liability related to all matters during the said internship period 
+        </p>
+        <div class="col-sm-4"></div>
+        <div class="center">
+            <a href="/sMail">
+                {{ form.submit_form(class="btn btn-primary px-5")}}
+            
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div class="col-sm-2">
+    <div class="form-group">
+        <br>
+        <p>Date :</p>
+        <p>{{form.todays_date}}</p>
+    </div>
+</div>
+
+
+</form>
+{% endblock content %}

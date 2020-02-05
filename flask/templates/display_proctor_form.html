@@ -1,0 +1,512 @@
+{% extends 'base.html' %}
+{% block title %} Proctor Form {% endblock title %}
+
+
+{% block content %}
+
+<form method="POST" action="/proctorForm" enctype="multipart/form-data">
+<style type="text/css">
+#bg {
+background-image: url(img/light-blue-navbar.jpg);
+background-size: cover;
+background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(157.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgb(36, 121, 196),rgb(136, 50, 37));
+}
+
+</style>
+<!-- navbar-->
+<script>
+var loadFile = function(event) {
+var image = document.getElementById('showPhoto');
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+</script>
+
+<header class="header" id="mynav">
+<div class="shadow-lg   mb-5 bg-white rounded sticky-top">
+<nav class="shadow-lg navbar navbar-expand-lg navbar-light bg-light fixed-top" id="heyy">
+
+<a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Student Forms </a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+<ul class="navbar-nav" align=center>
+
+<li class="nav-item ">
+    <a class="nav-link" href="#" style="color:white; border-bottom-style: solid;border-bottom-color: black; border-radius: 20px;border-bottom-width: medium">Proctor Form <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href="{{url_for('internshipForm')}}" style="color:white">Internship Form</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('studentpanel')}}" style="color:white">Student Panel</a>
+</li>
+<li class="nav-item ">
+    <a class="nav-link" href="#" style="color:white">Leave application</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{url_for('logout')}}" style="color:white">Logout</a>
+</li>
+
+</ul>
+</div>
+</nav>
+</div>
+</header>
+
+
+<div id="bg">
+
+<div id="bg">
+<div class="container shadow-lg" id="haha" >
+<div align=center>
+<div id="head">
+
+
+<div align=center>
+    <h4 class="pt-3">
+        K.J. Somaiya College of Engineering, Mumbai-77<br>
+
+    </h4>
+    <h5>
+        (Autonomous College Affiliated to University of Mumbai)
+
+    </h5>
+    <br>
+</div>
+</div>
+
+</div>
+<div class="py-3">
+
+</div>
+<div class="row " id="row-1">
+<div class="col-sm-2">
+<div class="form-group">
+    <p class="form-control-label">
+        Year of admission
+        </p>
+    <p class="form-control")>
+        {{pform.year_of_admission}}
+    </p>
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-group">
+    <p class="form-control-label">Branch</p>
+    <p class="form-control", id="sel1"> 
+        {{pform.branch}}
+
+    </p>
+        
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-check">
+    <p class="form-control-label">
+        Year
+    </p>
+    <p class="form-control border-0" id="exampleInputEmail1">
+        {{pform.year}}
+
+    </p>
+</div>
+</div>
+
+<div class="col-sm-2">
+<div class="form-group">
+    {{form.division.label(class="form-control-label")}}
+{{ form.division(class="form-control",id="exampleInputEmail1")}}
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-group">
+    <p class="form-control-label">Roll number</p>
+    <p class="form-control",id="exampleInputEmail1">
+        {{pform.id}}
+    </p>
+</div>
+</div>
+<div class="col-sm-2">
+<div class="form-group">
+    <p class="form-control-label">
+        Mobile Number
+
+    </p>
+    <p class="form-control",id="exampleInputEmail1">
+        {{pform.mobile_number}}
+
+    </p>
+</div>
+</div>
+
+
+<div class="py-3"></div>
+<div class="row">
+<div class="col-sm-9">
+<div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-3 form-control-label">
+            Name of Proctor
+        </div>
+        <div class="col-sm-9 form-control" id="inputPassword">
+        {{pform.name_of_proctor}}
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-3 form-control-label">
+        Email of Proctor
+        </div>
+        <div class="col-sm-9 form-control" id="inputPassword"">
+        {{pform.email_of_proctor}}
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group row">
+
+        <div class="col-sm-3 form-control-label">
+        mobile number of proctor
+        </div>
+        <div class="col-sm-9 form-control",id="inputPassword">
+        {{pform.mobile_number_of_proctor}}
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-3 form-control-label">
+        Name of student
+        </div>
+        <div class="col-sm-9 form-control",id="inputPassword">
+        {{pform.name_of_student}}
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group row">
+        <div class="col-sm-3 form-control-label">
+            Name of parent/guardian
+        </div>
+        <div class="col-sm-9 form-control",id="inputPassword">
+        {{pform.name_of_parent_guardian}}
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="col-sm-3" >
+<div class="" align=center>
+    <div class="form-group" id="showPhoto" style="padding-left: 15px;" >
+        <!-- <label for="exampleFormControlFile1" align=center>Upload your photo here</label> -->
+        <div class="row">
+        {{form.photo.label(class="form-control-label")}}
+        </div>
+        <!-- <div class="pl-3"></div> -->
+        <div class="row"  onchange="loadFile(event)">
+            {% set fname="img/" + "user_icon.png" %}
+
+            <img src="{{url_for('static',filename=fname)}}" style="width:150px;height: 150px;">
+        </div>
+        <br>
+        <!-- <div class="row">
+            {{ form.photo(class="form-control-file",id="exampleFormControlFile1")}}
+
+        </div> -->
+        <br>
+    
+
+            <button type="button" class="btn btn-danger">Delete photo</button>
+        
+        
+
+    </div>
+
+</div>
+<br>
+
+
+</div>
+</div>
+<div class="py-3"></div>
+
+<div id="row-1">
+<br>
+<div class="col-sm-12">
+<div class="form-group row">
+    <div class="col-sm-2 form-control-label">
+        Present Address/Local Address/hostel Address
+    </div>
+    <div class="col-sm-4 form-control",id="exampleFormControlTextarea1">
+        {{pform.pre_add_loc_add_hos_add}}
+
+    </div>
+    <div class="col-sm-2 form-control-label">
+        Present Address/Local Address/hostel Address of parents
+    </div>
+    <div class="col-sm-4 form-control",id="exampleFormControlTextarea1">
+        {{pform.parent_pre_add_loc_add_hos_add}}
+
+    </div>
+</div>
+</div>
+
+<div class="py-3"></div>
+<div class="col-sm-12">
+<div class="form-group row">
+    <div class="col-sm-6">
+        <div class="row">
+
+            <div class="col-sm-4 form-control-label">
+                Native Place/Permanent Address
+                
+            </div>
+            <div class="col-sm-8 form-control",id="exampleFormControlTextarea1">
+                {{pform.nav_place_permt_add}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row">
+
+            <div class="col-sm-4 form-control-label">
+                <p class="form-control-label">
+                    Residential
+                </p>
+                <p class="form-control",id="exampleInputEmail1">
+                    {{pform.residential}}
+                    </p>
+                
+            </div>
+            <div class="col-sm-4">
+                <p class="form-control-label">
+                    Office
+                </p>
+                <p class="form-control",id="exampleInputEmail1">
+                    {{pform.office}}
+                </p>
+                
+            </div>
+            <div class="col-sm-4">
+                <p class="form-control-label">
+                    Mobile Number
+                </p>
+                <p class="form-control",id="exampleInputEmail1">
+                    {{pform.ptr_mobile_number}}
+                </p>
+                                            
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="py-3"></div>
+<div class="col-sm-12">
+<div class="form-group row">
+    <div class="col-sm-2 form-control-label">
+        Student Email Id
+
+    </div>
+    <div class="col-sm-4 form-control",id="exampleFormControlTextarea1">
+        {{pform.stu_email_id}}
+
+    </div>
+    <div class="col-sm-2 form-control-label">
+        Parent Email Id
+
+    </div>
+    <div class="col-sm-4 form-control",id="exampleFormControlTextarea1">
+        {{pform.prt_email_id}}
+
+    </div>
+
+    
+</div>
+</div>
+</div>
+
+<br>
+<div id="row-1">
+<div class="py-3"></div>
+<div class="row">
+<div class="col-sm-2">
+    <div class="form-group">
+        <p class="form-control-label">
+            Blood Group
+
+        </p>
+        <p class="form-control",id="sel1">
+            {{pform.blood_group}}
+        </p>
+    </div>
+</div>
+<div class="col-sm-2">
+    <!-- <div class="form-check"> -->
+        <div class="form-group">
+
+        <p class="form-control-label">
+            Any disease
+        </p>
+        <p class="form-control",id="sel1">
+            {{pform.any_disease_disability}}
+
+        </p>
+    </div>
+</div>
+
+<div class="col-sm-2">
+    <div class="form-group">
+        <p class="form-control-label">
+            Date of birth
+        </p>
+        <p class="form-control",id="exampleInputEmail1">
+            {{pform.date_of_birth}}
+
+        </p>
+
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="form-group">
+        <p class="form-control-label">
+            Place of birth
+        </p>
+        <p class="form-control",id="exampleInputEmail1">
+            {{pform.place_of_birth}}    
+
+        </p>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="form-group">
+        <p class="form-control-label">
+            Mother tongue
+        </p>
+        <p class="form-control",id="exampleInputEmail1">
+            {{pform.mother_tongue}}
+
+        </p>
+    </div>
+</div>
+<div class="col-sm-2">
+    <div class="form-group">
+        <p class="form-control-label">
+            Religion
+        </p>
+        <p class="form-control",id="exampleInputEmail1">
+            {{pform.religion}}
+
+        </p>
+    </div>
+</div>
+
+</div>
+
+
+<!-- shjfvs;fygas;kgfsfnwmflwhjgwkf fwk;ebf;wkufwiugfwfkwfigwfk'wf'w -->
+
+<div class="py-3">
+
+</div>
+<div class="row">
+<div class="col-sm-12">
+    <div class="form-group row">
+        
+        <div class="col-sm-4">
+            <p class="col-control-label",id="exampleInputEmail1">
+                Score at the competative exam based on which admission to KJSCE is taken: Name of that exam
+             
+            </p>
+            <p class=" col-sm-3 form-control",id="exampleInputEmail1">
+                {{pform.exam}}
+            </p>
+
+        </div>
+        <div class="col-sm-2">
+            <p class="col-control-label",id="exampleInputEmail1">
+                Score
+            </p>
+            <p class="form-control",id="exampleInputEmail1">
+                {{pform.score}}
+            </p>
+
+        </div>
+        <div class="col-sm-2">
+            <p class="col-control-label",id="exampleInputEmail1">
+                %SSC marks
+
+            </p>
+            <p class="form-control",id="exampleInputEmail1">
+                {{pform.per_ssc_marks}}
+            </p>
+
+        </div>
+        <div class="col-sm-4">
+            <p class="col-control-label",id="exampleInputEmail1">
+                %HSC/Diploma marks
+            </p>
+            <p class="form-control",id="exampleInputEmail1">
+                {{pform.per_hsc_marks}}
+            </p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+</div>
+</div>
+
+<div class="py-3"></div>
+<!-- <div class="container"> -->
+<div class="row">
+<div class="form-check ">
+    <div class="col-sm-6 col-control-label",id="exampleInputEmail1">
+        The information given above is true to the best of my knowledge and I will adhere to the rules and regulations of the college/campus specifically behaviour discipline, attendance, ragging and intellectual property rights during the tenure of completion of the undergraduate/postgraduate programme.
+
+    </div>
+    <div class="col-sm-6 col-control",id="exampleInputEmail1">
+        {{pform.discipline}}
+
+    </div>
+</div>
+</div>
+</div>
+
+<div class="py-3"></div>
+<div class="row">
+<div class="col-sm-2">
+<div class="form-group">
+    <p>Date :</p>
+    <p>
+        {{pform.date}}
+    </p>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+
+
+<div class="pr-5 py-3" align=center>
+{{ form.submit(class="btn btn-primary px-5")}}
+
+</div>
+</div>
+</div>
+</form>
+
+{% endblock content %}

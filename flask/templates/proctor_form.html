@@ -1,0 +1,457 @@
+{% extends 'base.html' %}
+{% block title %} Proctor Form {% endblock title %}
+
+
+{% block content %}
+
+<form method="POST" action="/proctorForm" enctype="multipart/form-data">
+<style type="text/css">
+#bg {
+background-image: url(img/light-blue-navbar.jpg);
+background-size: cover;
+background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(157.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgb(36, 121, 196),rgb(136, 50, 37));
+}
+
+</style>
+<!-- navbar-->
+<script>
+var loadFile = function(event) {
+var image = document.getElementById('showPhoto');
+image.src = URL.createObjectURL(event.target.files[0]);
+};
+
+</script>
+
+<header class="header" id="mynav">
+<div class="shadow-lg   mb-5 bg-white rounded sticky-top">
+<nav class="shadow-lg navbar navbar-expand-lg navbar-light bg-light fixed-top" id="heyy">
+
+    <a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Student Forms </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav" align=center>
+
+            <li class="nav-item ">
+                <a class="nav-link" href="#" style="color:white; border-bottom-style: solid;border-bottom-color: black; border-radius: 20px;border-bottom-width: medium">Proctor Form <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('internshipForm')}}" style="color:white">Internship Form</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('studentpanel')}}" style="color:white">Student Panel</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#" style="color:white">Leave application</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('logout')}}" style="color:white">Logout</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+</div>
+</header>
+
+
+<div id="bg">
+
+<div id="bg">
+<div class="container shadow-lg" id="haha" >
+    <div align=center>
+        <div id="head">
+
+
+            <div align=center>
+                <h4 class="pt-3">
+                    K.J. Somaiya College of Engineering, Mumbai-77<br>
+
+                </h4>
+                <h5>
+                    (Autonomous College Affiliated to University of Mumbai)
+
+                </h5>
+                <br>
+            </div>
+        </div>
+
+    </div>
+    <div class="py-3">
+
+    </div>
+    <div class="row " id="row-1">
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.year_of_admission.label(class="form-control-label")}}
+                {{ form.year_of_admission(class="form-control", id="sel1")}}    
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.branch.label(class="form-control-label")}}
+                {{ form.branch(class="form-control", id="sel1")}}
+                    
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-check">
+                {{form.year.label(class="form-control-label")}}
+                {{ form.year(class="form-control border-0",id="exampleInputEmail1")}}
+            </div>
+            </div>
+
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.division.label(class="form-control-label")}}
+        {{ form.division(class="form-control",id="exampleInputEmail1")}}
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                <p class="form-control-label">
+                    Roll Number
+                </p>
+                <p class="form-control",id="exampleInputEmail1">
+                    {{ form.id}}
+                </p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="form-group">
+                {{form.mobile_number.label(class="form-control-label")}}
+                {{ form.mobile_number(class="form-control",id="exampleInputEmail1")}}
+
+            </div>
+        </div>
+
+
+    <div class="py-3"></div>
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                    {{form.name_of_proctor.label(class="form-control-label")}}
+                    </div>
+                    <div class="col-sm-9">
+                    {{ form.name_of_proctor(class="form-control",id="inputPassword")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                    {{form.email_of_proctor.label(class="form-control-label")}}
+                    </div>
+                    <div class="col-sm-9">
+                    {{ form.email_of_proctor(class="form-control",id="inputPassword")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group row">
+
+                    <div class="col-sm-3">
+                    {{form.mobile_number_of_proctor.label(class="form-control-label")}}
+                    </div>
+                    <div class="col-sm-9">
+                    {{ form.mobile_number_of_proctor(class="form-control",id="inputPassword")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                    {{form.name_of_student.label(class="form-control-label")}}
+                    </div>
+                    <div class="col-sm-9">
+                    {{ form.name_of_student(class="form-control",id="inputPassword")}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                    {{form.name_of_parent_guardian.label(class="form-control-label")}}
+                    </div>
+                    <div class="col-sm-9">
+                    {{ form.name_of_parent_guardian(class="form-control",id="inputPassword")}}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-sm-3" >
+            <div class="" align=center>
+                <div class="form-group" id="showPhoto" style="padding-left: 15px;" >
+                    <!-- <label for="exampleFormControlFile1" align=center>Upload your photo here</label> -->
+                    <div class="row">
+                    {{form.photo.label(class="form-control-label")}}
+                    </div>
+                    <!-- <div class="pl-3"></div> -->
+                    <div class="row"  onchange="loadFile(event)">
+
+                        <img src="{{url_for('static',filename="img/user_icon.png")}}" style="width:150px;height: 150px;">
+                    </div>
+                    <br>
+                    <!-- <div class="row">
+                        {{ form.photo(class="form-control-file",id="exampleFormControlFile1")}}
+
+                    </div> -->
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <button type="upload" class="btn btn-danger">Upload</button>
+                    </form>
+                        <!-- <button type="button" class="btn btn-danger">Delete photo</button> -->
+                    
+                        <!-- <form method=post enctype=multipart/form-data action="{{url_for('upload_file')}}" >
+                            <input type=file name=file>
+                            <input type=submit value=Upload>
+                          </form> -->
+
+                </div>
+
+            </div>
+            <!-- <div class="row">
+
+                {{form.photo.label(class="form-control-label")}}
+                {{ form.photo(class="form-control-file",id="exampleFormControlFile1")}}
+            </div> -->
+            <br>
+
+
+        </div>
+    </div>
+    <div class="py-3"></div>
+
+    <div id="row-1">
+        <br>
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    {{form.pre_add_loc_add_hos_add.label(class="form-control-label")}}
+                </div>
+                <div class="col-sm-4">
+                    {{ form.pre_add_loc_add_hos_add(class="form-control",id="exampleFormControlTextarea1")}}
+
+                </div>
+                <div class="col-sm-2">
+                    {{form.parent_pre_add_loc_add_hos_add.label(class="form-control-label")}}
+                </div>
+                <div class="col-sm-4">
+                    {{ form.parent_pre_add_loc_add_hos_add(class="form-control",id="exampleFormControlTextarea1")}}
+
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-sm-7"></div>
+            <div class="form-check ">
+                <div class="pl-3">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1 ">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Same as student
+                    </label>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="py-3"></div>
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            {{form.nav_place_permt_add.label(class="form-control-label")}}
+                            
+                        </div>
+                        <div class="col-sm-8">
+                            {{form.nav_place_permt_add(class="form-control",id="exampleFormControlTextarea1")}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="row">
+
+                        <div class="col-sm-4">
+                            {{form.residential.label(class="form-control-label")}}
+                            {{form.residential(class="form-control",id="exampleInputEmail1")}}
+                            
+                        </div>
+                        <div class="col-sm-4">
+                            {{form.office.label(class="form-control-label")}}
+                            {{form.office(class="form-control",id="exampleInputEmail1")}}
+                            
+                        </div>
+                        <div class="col-sm-4">
+                            {{form.ptr_mobile_number.label(class="form-control-label")}}
+                            {{form.ptr_mobile_number(class="form-control",id="exampleInputEmail1")}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-3"></div>
+        <div class="col-sm-12">
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    {{form.stu_email_id.label(class="form-control-label")}}
+
+                </div>
+                <div class="col-sm-4">
+                    {{form.stu_email_id(class="form-control",id="exampleFormControlTextarea1")}}
+
+                </div>
+                <div class="col-sm-2">
+                    {{form.prt_email_id.label(class="form-control-label")}}
+
+                </div>
+                <div class="col-sm-4">
+                    {{form.prt_email_id(class="form-control",id="exampleFormControlTextarea1")}}
+
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div id="row-1">
+        <div class="py-3"></div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="form-group">
+                {{form.blood_group.label(class="form-control-label")}}
+                {{form.blood_group(class="form-control",id="sel1")}}
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <!-- <label for="sel1">Any disease/disability</label> -->
+                <div class="form-check">
+                    {{form.any_disease_disability.label(class="form-check-label")}}
+                {{ form.any_disease_disability(class="form-check")}}
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                <div class="form-group">
+                    {{form.date_of_birth.label(class="form-control-label")}}
+                    {{form.date_of_birth(class="form-control",id="exampleInputEmail1")}}
+
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    {{form.place_of_birth.label(class="form-control-label")}}
+                    {{form.place_of_birth(class="form-control",id="exampleInputEmail1")}}
+
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    {{form.mother_tongue.label(class="form-control-label")}}
+                    {{form.mother_tongue(class="form-control",id="exampleInputEmail1")}}
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    {{form.religion.label(class="form-control-label")}}
+                    {{form.religion(class="form-control",id="exampleInputEmail1")}}
+                </div>
+            </div>
+
+        </div>
+
+        
+<!-- shjfvs;fygas;kgfsfnwmflwhjgwkf fwk;ebf;wkufwiugfwfkwfigwfk'wf'w -->
+
+        <div class="py-3"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group row">
+                    
+                    <div class="col-sm-4">
+                        {{form.exam.label(class="form-check-label")}}
+
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form.exam(class="form-check")}}
+
+                    </div>
+                    <div class="col-sm-2">
+                        {{form.score.label(class="col-control-label",id="exampleInputEmail1")}}
+
+                        {{form.score(class="form-control",id="exampleInputEmail1")}}
+
+                    </div>
+                    <div class="col-sm-2">
+                        {{form.per_ssc_marks.label(class="col-control-label",id="exampleInputEmail1")}}
+
+                        {{form.per_ssc_marks(class="form-control",id="exampleInputEmail1")}}
+                    </div>
+                    <div class="col-sm-2">
+                        {{form.per_hsc_marks.label(class="col-control-label",id="exampleInputEmail1")}}
+
+                        {{form.per_hsc_marks(class="form-control",id="exampleInputEmail1")}}
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+        </div>
+    </div>
+
+    <div class="py-3"></div>
+    <!-- <div class="container"> -->
+        <div class="row">
+            <div class="form-check ">
+                <div class="col-sm-6">
+                    {{form.discipline.label(class="col-control-label",id="exampleInputEmail1")}}
+
+                </div>
+                <div class="col-sm-6">
+                    {{form.discipline(class="col-control",id="exampleInputEmail1")}}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-3"></div>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="form-group">
+                <p>Date :</p>
+                <p>
+                    {{form.date}}
+                </p>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <div class="pr-5 py-3" align=center>
+        {{ form.submit(class="btn btn-primary px-5")}}
+
+    </div>
+</div>
+</div>
+</form>
+
+{% endblock content %}
