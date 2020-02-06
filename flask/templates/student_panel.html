@@ -42,7 +42,13 @@
 </div>
 
 <a class="navbar-brand px-2" href="#" id="profile_photo">
+  {% if pform!=None %}
+  {% set profile_pic="profiles/" + pform.photo %}
+  <img src="{{ url_for('static' , filename=profile_pic) }}" width="30" height="30" alt="">
+  {% else %}
   <img src="{{ url_for('static' , filename='img/user_icon.png') }}" width="30" height="30" alt="">
+  {% endif %}
+
 </a>
 </div>
 </nav>
@@ -67,7 +73,10 @@
     }
 </style>
 
-<div class="container" style="border: 1px solid black;border-radius: 7px;">
+<div class="container-fluid" style="background-color: #bdd4e7;
+background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+">
+<div class="container" style="background-color: white;">
 <div class="mx-2">
 <div class="row"> 
 <div class="col-md-8" id="column-1">
@@ -76,33 +85,36 @@
     </div>
     <div class="ref">
     <div class="row" >
-        <div class="card mx-3 my-3" style="width: 13rem;height: 13rem;">
+        <div class="card mx-3 my-3" style="width: 13rem;height: 8rem;">
         
 <div class="card-body">
 <h6 class="card-title">Proctor Form</h6>
+<hr style="width: 100%;background-color: black;">
 {% if pform != None %}
-<h6 class="card-subtitle mb-2 text-muted">Submited</h6>
+<h6 class="card-subtitle mb-2 text-muted" style="color: green !important;">Submited</h6>
 <a href="{{url_for('displaypform')}}" class="card-link">View</a>
 <a href="{{url_for('deletepform')}}" class="card-link">Delete</a>
 {% else %}
-<h6 class="card-subtitle mb-2 text-muted">not Submited</h6>
-<a href="{{url_for('displaypform')}}" class="card-link">fill form</a>
+<h6 class="card-subtitle mb-2 text-muted" style="color: red !important;">not Submited</h6>
+<a href="{{url_for('displaypform')}}" class="card-link">Fill Form</a>
 
 {% endif %}
 <!-- <p class="card-text"></p> -->
 
 </div>
 </div>
-  <div class="card mx-3 my-3" style="width: 13rem;height: 13rem;">
+  <div class="card mx-3 my-3" style="width: 13rem;height: 8rem;">
 <div class="card-body">
 <h6 class="card-title">Internship Form</h6>
+<hr style="width: 100%;background-color: black;">
+
 {% if iform != None %}
 <h6 class="card-subtitle mb-2 text-muted">Submited</h6>
 <a href="{{url_for('displayiform')}}" class="card-link">View</a>
 <a href="{{url_for('deleteiform')}}" class="card-link">Delete</a>
 {% else %}
-<h6 class="card-subtitle mb-2 text-muted">not Submited</h6>
-<a href="{{url_for('displayiform')}}" class="card-link">fill form</a>
+<h6 class="card-subtitle mb-2 text-muted" style="color: red !important;">not Submited</h6>
+<a href="{{url_for('displayiform')}}" class="card-link">Fill Form</a>
 {% endif %}
 <!-- <h6 class="card-subtitle mb-2 text-muted">Submited</h6> -->
 <!-- <p class="card-text"></p> -->
@@ -122,31 +134,19 @@
       <b>Other certificates:</b>
   </div>
     <div style="width:100%;height:150px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;border: solid black 2px;">
+      {% for k in certificates %}
       <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
-        <div class="col-md-10" style="color: white;">
-          name of file
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
-        </div>
-      </div>
 
-      <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
         <div class="col-md-10" style="color: white;">
-          name of file
+          {{k.fname}}
         </div>
         <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
+          {% set show_cert="certificates/" + k.fname %}
+          <a href="{{url_for('uploaded_file',filename=show_cert)}}"><button class="btn btn-primary" >Show</button></a>
         </div>
       </div>
-      <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
-        <div class="col-md-10" style="color: white;">
-          name of file
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
-        </div>
-      </div>
+      {% endfor %}
+
     </div>
 
     <br>
@@ -284,6 +284,7 @@ for (i = 0; i < acc.length; i++) {
 </div>
 </div>
 <br>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

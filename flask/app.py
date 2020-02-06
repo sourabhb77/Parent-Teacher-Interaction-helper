@@ -13,14 +13,18 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
 
-app=Flask(__name__)
+# app=Flask(__name__)
+app = Flask(__name__, static_folder='static')
+
 # for uploading certificates
-UPLOAD_FOLDER = 'D:\\pps\\flask\\certificates'
+# UPLOAD_FOLDER = '\\home\\sourabh\\Desktop\\Parent-Teacher-Interaction-helper\\flask\\static\\certificates'
+UPLOAD_FOLDER ='/home/sourabh/Desktop/Parent-Teacher-Interaction-helper/flask/static/certificates'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg','pdf','docx'}
+PROFILE_ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # for profiles
-app.config['PROFILE']='D:\\pps\\flask\\profiles'
+app.config['PROFILE']='D:\\pps\\flask\\static\\profiles'
 
 app.config['SECRET_KEY']='abcde'
 
@@ -48,8 +52,15 @@ login_manager.init_app(app)
 class User(db.Model,UserMixin):
     id=db.Column(db.String(7),primary_key=True)
     password=db.Column(db.String(50),nullable=False)
+    certi=db.relationship('User_certi',backref='owner')
     def __repr__(self):
         return f"(User('{self.id}','{self.password}'))"
+
+class User_certi(db.Model,UserMixin):
+    id=db.Column(db.Integer,primary_key=True)
+    fname=db.Column(db.String(20))
+    owner_id=db.Column(db.String(7),db.ForeignKey('user.id'))
+
 
 
 class IntForm(db.Model,UserMixin):
@@ -128,12 +139,12 @@ class PtrForm(db.Model,UserMixin):
         return f"PtrForm('{self.id}')"
 
 
-
-admin.add_view(ModelView(User,db.session))
+class UserModelView(ModelView):
+    column_list = ('id', 'password')
+admin.add_view(UserModelView(User,db.session))
 admin.add_view(ModelView(IntForm,db.session))
 admin.add_view(ModelView(PtrForm,db.session))
-
-
+admin.add_view(ModelView(User_certi,db.session))
 
 
 
@@ -302,19 +313,29 @@ def proctorForm():
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        if file and allowed_file(file.filename):
-            file.filename=id+".jpeg"
+        if file and profile_allowed_file(file.filename):
+            h=file.filename.rsplit('.', 1)[1].lower()
+            if h=='jpeg':
+                file.filename=id+".jpeg"
+            elif h=='png':
+                file.filename=id+".png"
+            elif h=='jpg':
+                file.filename=id+".jpg"
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['PROFILE'], filename))
+            file.save(os.path.join(app.static_folder+"/profiles", filename))
         # end profile photo
         db.session.add(PtrForm(id=id,year_of_admission=year_of_admission,branch=branch,year=year,division=division,mobile_number=mobile_number,name_of_proctor=name_of_proctor,email_of_proctor=email_of_proctor,mobile_number_of_proctor=mobile_number_of_proctor,name_of_student=name_of_student,name_of_parent_guardian=name_of_parent_guardian,pre_add_loc_add_hos_add=pre_add_loc_add_hos_add,parent_pre_add_loc_add_hos_add=parent_pre_add_loc_add_hos_add,nav_place_permt_add=nav_place_permt_add,residential=residential,office=office,ptr_mobile_number=ptr_mobile_number,stu_email_id=stu_email_id,prt_email_id=prt_email_id,blood_group=blood_group,any_disease_disability=any_disease_disability,date_of_birth=date_of_birth,place_of_birth=place_of_birth,mother_tongue=mother_tongue,religion=religion,exam=exam,score=score,per_ssc_marks=per_ssc_marks,per_hsc_marks=per_hsc_marks,discipline=discipline,date=date,photo=photo))
         db.session.commit()
         flash(f"{id} submited proctorform",'success')
         return redirect(url_for('displaypform'))
     
-
-
     return render_template('proctor_form.html',form=form)
+
+
+
+def profile_allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in PROFILE_ALLOWED_EXTENSIONS
 
 @app.route("/logout")
 def logout():
@@ -417,6 +438,7 @@ def displayiform():
 def studentpanel():
     pform=PtrForm.query.filter_by(id=current_user.id).first()
     iform=IntForm.query.filter_by(id=current_user.id).first()
+    certificates =User_certi.query.filter_by(owner=current_user)
     if current_user.id[0]=='s':
         if request.method=='POST':
             email=pform.email_of_proctor
@@ -426,7 +448,7 @@ def studentpanel():
                                 recipients=[email],
                                 body=message)
             flash("mail send",'success')
-        return render_template("student_panel.html",pform=pform,iform=iform)
+        return render_template("student_panel.html",pform=pform,iform=iform,certificates=certificates)
     elif current_user.id[0]=='p':
         flash("you can\'t go there",'danger')
         return redirect(url_for("proctorpanel"))
@@ -434,6 +456,9 @@ def studentpanel():
         flash("you can\'t go there",'danger')
         return redirect(url_for("parentpanel"))
 
+@app.route('/uploads/<path:filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.static_folder, filename)
 
 
 @app.route("/deleteiform")
@@ -506,30 +531,14 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Choose your files</h1>
-    <hr>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    <hr>
-
-    '''
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
-
-
-
+            db.session.add(User_certi(fname=filename,owner=current_user))
+            db.session.commit()
+            file.save(os.path.join(app.static_folder+"/certificates", filename))
+            # return redirect(url_for('uploaded_file',filename=filename))
+            flash("Document saved",'success')
+            return redirect(request.url)
+            
+    return render_template('upload_certificates.html')
 
 
 if __name__=="__main__":

@@ -33,46 +33,19 @@
   <li class="nav-item">
     <a class="nav-link" style="color: white;" href="{{url_for('logout')}}">Log out</a>
   </li>
- 
-  <!-- <li>
-      <div class="dropdown pr-2">
-<button class="btn dropdown-toggle " type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Forms
-</button>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Proctor Form</a>
-<a class="dropdown-item" href="#">Internship Form</a>
-<a class="dropdown-item" href="#">Other Forms</a>
-</div>
-</div>
-  </li> -->
-  <!-- <li>
-      <div class="dropdown ">
-<button class="btn dropdown-toggle" type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Forms
-</button>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Proctor Form</a>
-<a class="dropdown-item" href="#">Internship Form</a>
-<a class="dropdown-item" href="#">Other Forms</a>
-</div>
-</div>
-  </li> -->
 </ul>
 
 <div class="dropdown px-2">
 <button class="btn dropdown-toggle" type="button" id="my" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Name of student
+  {{current_user.id}}
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">View profile</a>
-<a class="dropdown-item" href="#">Edit profile</a>
-<a class="dropdown-item" href="#">View details</a>
+ <span class="dropdown-item">email id : {{current_user.id}}</span>
 </div>
 </div>
 
 <a class="navbar-brand px-2" href="#" id="profile_photo">
-  <img src="" width="30" height="30" alt="">
+  <img src="{{ url_for('static' , filename='img/user_icon.png') }}" width="30" height="30" alt="">
 </a>
 </div>
 </nav>
@@ -93,28 +66,47 @@ Name of student
         font-weight: bold;
         
     }
+    body{
+      background-color: #bdd4e7;
+background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+
+    }
 </style>
 
-<div class="container" style="border: 1px solid black;border-radius: 7px;">
-
+<div class="container-fluid">
+<div class="container" style="background-color: white;">
 <div class="row"> 
 <div class="col-md-8" id="column-1">
-   
-
-
     <div class="row">
         {% for i in pform %}
-    <div class="card" style=" height:25rem;
-width:33%;">
-    <img class="card-img-top" id="img" src="{{i.photo}}" alt="Card image cap">
+    <div class="card" style="width:33%;background-color: #ecf3f9;">
+{% set profile_pic="profiles/" + i.photo %}
+    <img class="card-img-top" id="img" src="{{ url_for('static' , filename=profile_pic) }}" alt="Card image cap" style="height: 230px;width: 100%;">
     <div class="card-body">
         <b>ID: </b>{{i.id}}<br>
         <b>Name:</b>{{i.name_of_student}}<br>
         <b>Email ID:</b><span class="stu_mail">{{i.stu_email_id}}</span> <br>
         <b>Documents:</b> <br>
-        <button class="btn btn-secondary" type="submit">Academics</button>
-        <button class="btn btn-secondary" type="submit">Non-Academics</button><br>
-                <div class="py-1"></div>
+
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Academics
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Proctor Form</a>
+            <a class="dropdown-item" href="#">Internship form</a>
+          </div>
+        </div> <div class="py-1"></div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Non Academics
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Proctor Form</a>
+            <a class="dropdown-item" href="#">Internship form</a>
+          </div>
+        </div>
         <div class="form-group form-check" align="center">
       
         <input type="checkbox" class="form-check-input" id="exampleCheck1" class="{{i.id}}" onclick="var mail={{ i.stu_email_id }};function showmail(mail){alert(mail);};showmail();">
@@ -244,7 +236,7 @@ width:33%;">
 </div>
 </div>
 <br>
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -141,6 +141,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 </div>
 </div>
 
+</div>
 
 <div class="py-3"></div>
 <div class="row">
@@ -207,11 +208,11 @@ image.src = URL.createObjectURL(event.target.files[0]);
         </div>
         <!-- <div class="pl-3"></div> -->
         <div class="row"  onchange="loadFile(event)">
-            {% set fname="img/" + "user_icon.png" %}
+            {% set fname="profiles/" + pform.photo %}
 
-            <img src="{{url_for('static',filename=fname)}}" style="width:150px;height: 150px;">
+            <img src="{{url_for('static',filename=fname)}}" style="width:200px;height: 200px;border: solid #b3cdd1 2px;">
         </div>
-        <br>
+        <!-- <br> -->
         <!-- <div class="row">
             {{ form.photo(class="form-control-file",id="exampleFormControlFile1")}}
 
@@ -219,7 +220,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
         <br>
     
 
-            <button type="button" class="btn btn-danger">Delete photo</button>
+            <!-- <button type="button" class="btn btn-danger">Delete photo</button> -->
         
         
 
@@ -231,7 +232,7 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
 </div>
 </div>
-<div class="py-3"></div>
+<!-- <div class="py-3"></div> -->
 
 <div id="row-1">
 <br>
@@ -480,7 +481,6 @@ image.src = URL.createObjectURL(event.target.files[0]);
     </div>
 </div>
 </div>
-</div>
 
 <div class="py-3"></div>
 <div class="row">
@@ -499,12 +499,6 @@ image.src = URL.createObjectURL(event.target.files[0]);
 
 </div>
 
-
-
-<div class="pr-5 py-3" align=center>
-{{ form.submit(class="btn btn-primary px-5")}}
-
-</div>
 </div>
 </div>
 </form>
