@@ -14,9 +14,14 @@ from flask_admin.contrib.sqla import ModelView
 
 
 app=Flask(__name__)
-UPLOAD_FOLDER = 'C:\\Users\\SOURABH\\Desktop\\py_project\\flask\\certificates'
+# for uploading certificates
+UPLOAD_FOLDER = 'D:\\pps\\flask\\certificates'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg','pdf','docx'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# for profiles
+app.config['PROFILE']='D:\\pps\\flask\\profiles'
+
 app.config['SECRET_KEY']='abcde'
 
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
@@ -292,10 +297,23 @@ def proctorForm():
         date=datetime.now().strftime("%x")
         photo= current_user.id +".png"
         # photo=request.files['photo'].read()
+        # for profile photo
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            file.filename=id+".jpeg"
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['PROFILE'], filename))
+        # end profile photo
         db.session.add(PtrForm(id=id,year_of_admission=year_of_admission,branch=branch,year=year,division=division,mobile_number=mobile_number,name_of_proctor=name_of_proctor,email_of_proctor=email_of_proctor,mobile_number_of_proctor=mobile_number_of_proctor,name_of_student=name_of_student,name_of_parent_guardian=name_of_parent_guardian,pre_add_loc_add_hos_add=pre_add_loc_add_hos_add,parent_pre_add_loc_add_hos_add=parent_pre_add_loc_add_hos_add,nav_place_permt_add=nav_place_permt_add,residential=residential,office=office,ptr_mobile_number=ptr_mobile_number,stu_email_id=stu_email_id,prt_email_id=prt_email_id,blood_group=blood_group,any_disease_disability=any_disease_disability,date_of_birth=date_of_birth,place_of_birth=place_of_birth,mother_tongue=mother_tongue,religion=religion,exam=exam,score=score,per_ssc_marks=per_ssc_marks,per_hsc_marks=per_hsc_marks,discipline=discipline,date=date,photo=photo))
         db.session.commit()
         flash(f"{id} submited proctorform",'success')
         return redirect(url_for('displaypform'))
+    
+
+
     return render_template('proctor_form.html',form=form)
 
 @app.route("/logout")
