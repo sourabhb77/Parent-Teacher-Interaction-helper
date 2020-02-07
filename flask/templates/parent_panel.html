@@ -1,19 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="css/custom.css"> -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
-<!-- <style>
-  body{
-    background-color: red;  
-  }
-</style> -->
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}"> -->
 <title>Parent Panel</title>
 </head>
 <body>
@@ -33,40 +25,15 @@
   <li class="nav-item">
     <a class="nav-link" style="color: white;" href="{{url_for('logout')}}">Log out</a>
   </li>
- 
-  <!-- <li>
-      <div class="dropdown pr-2">
-<button class="btn dropdown-toggle " type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Forms
-</button>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Proctor Form</a>
-<a class="dropdown-item" href="#">Internship Form</a>
-<a class="dropdown-item" href="#">Other Forms</a>
-</div>
-</div>
-  </li> -->
-  <!-- <li>
-      <div class="dropdown ">
-<button class="btn dropdown-toggle" type="button" id="drpdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Forms
-</button>
-<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<a class="dropdown-item" href="#">Proctor Form</a>
-<a class="dropdown-item" href="#">Internship Form</a>
-<a class="dropdown-item" href="#">Other Forms</a>
-</div>
-</div>
-  </li> -->
 </ul>
 
 <div class="dropdown px-2">
 <button class="btn dropdown-toggle" type="button" id="my" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-Name of student
+{{pform.name_of_student}}
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  <span class="dropdown-item">email id :</span>
-  <span class="dropdown-item">email id :</span>
+  <span class="dropdown-item">email id : {{pform.stu_email_id}}</span>
+  <!-- <span class="dropdown-item">email id :</span> -->
 
 <!-- <a class="dropdown-item" href="#">View profile</a>
 <a class="dropdown-item" href="#">Edit profile</a>
@@ -75,10 +42,18 @@ Name of student
 </div>
 
 <a class="navbar-brand px-2" href="#" id="profile_photo">
-  <img src="" width="30" height="30" alt="">
+  {% if pform!=None %}
+  {% set profile_pic="profiles/" + pform.photo %}
+  <img src="{{ url_for('static' , filename=profile_pic) }}" width="30" height="30" alt="">
+  {% else %}
+  <img src="{{ url_for('static' , filename='img/user_icon.png') }}" width="30" height="30" alt="">
+  {% endif %}
+
 </a>
 </div>
 </nav>
+
+
 
 {% with messages= get_flashed_messages(with_categories=true) %}
 {%if messages%}
@@ -98,82 +73,80 @@ Name of student
     }
 </style>
 
-<div class="container" style="border: 1px solid black;border-radius: 7px;">
+<div class="container-fluid" style="background-color: #bdd4e7;
+background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+">
+<div class="container" style="background-color: white;">
 <div class="mx-2">
 <div class="row"> 
 <div class="col-md-8" id="column-1">
     <div class="py-3">
         <b>View Documents/Forms:</b>
     </div>
-    <div class="row" style="border-bottom: 1px solid black;">
-        <div class="card mx-3 my-3" style="width: 13rem;height: 13rem;">
+    <div class="ref">
+    <div class="row" >
+        <div class="card mx-3 my-3" style="width: 13rem;height: 8rem;">
         
 <div class="card-body">
 <h6 class="card-title">Proctor Form</h6>
+<hr style="width: 100%;background-color: black;">
 {% if pform != None %}
-<h6 class="card-subtitle mb-2 text-muted">Submited</h6>
+<h6 class="card-subtitle mb-2 text-muted" style="color: green !important;">Submited</h6>
 <a href="{{url_for('displaypform')}}" class="card-link">View</a>
 {% else %}
-<h6 class="card-subtitle mb-2 text-muted">not Submited</h6>
-
+<h6 class="card-subtitle mb-2 text-muted" style="color: red !important;">not Submited</h6>
 {% endif %}
 <!-- <p class="card-text"></p> -->
 
 </div>
 </div>
-  <div class="card mx-3 my-3" style="width: 13rem;height: 13rem;">
+  <div class="card mx-3 my-3" style="width: 13rem;height: 8rem;">
 <div class="card-body">
 <h6 class="card-title">Internship Form</h6>
+<hr style="width: 100%;background-color: black;">
+
 {% if iform != None %}
 <h6 class="card-subtitle mb-2 text-muted">Submited</h6>
 <a href="{{url_for('displayiform')}}" class="card-link">View</a>
 {% else %}
-<h6 class="card-subtitle mb-2 text-muted">not Submited</h6>
+<h6 class="card-subtitle mb-2 text-muted" style="color: red !important;">not Submited</h6>
 {% endif %}
 <!-- <h6 class="card-subtitle mb-2 text-muted">Submited</h6> -->
 <!-- <p class="card-text"></p> -->
 </div>
 </div>
-
+  <!-- <div class="card mx-3 my-3" style="width: 13rem;height: 13rem;">
+<div class="card-body">
+<h6 class="card-title">Other Forms</h6>
+<h6 class="card-subtitle mb-2 text-muted">Submited</h6>
+<p class="card-text"></p>
+<a href="#" class="card-link">View</a>
+<a href="#" class="card-link">Delete</a>
+</div>
+</div> -->
     </div>
     <div class="py-3">
       <b>Other certificates:</b>
   </div>
     <div style="width:100%;height:150px;overflow:scroll;overflow-y:scroll;overflow-x:hidden;border: solid black 2px;">
+      {% for k in certificates %}
       <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
-        <div class="col-md-10" style="color: white;">
-          name of file
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
-        </div>
-      </div>
 
-      <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
         <div class="col-md-10" style="color: white;">
-          name of file
+          {{k.fname}}
         </div>
         <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
+          <a href="{{url_for('uploaded_file',filename=k.fname)}}" target="_blank"><button class="btn btn-primary" >Show</button></a>
         </div>
       </div>
-      <div class="row" style="background-color: #005582;padding: 5px;margin-bottom: 2px;">
-        <div class="col-md-10" style="color: white;">
-          name of file
-        </div>
-        <div class="col-md-2">
-          <button class="btn btn-primary">Show</button>
-        </div>
-      </div>
+      {% endfor %}
+
     </div>
 
     <br>
-    <div class="uploadfiles">
-      <h6>upload your certificates here</h6>
-      <a href="{{url_for('upload_file')}}" ><button class="btn btn-primary">Upload Certificates</button></a>
-    </div>
     
     <hr style="background-color: black;">
+  </div>
     <div class="row">
         <div class="col-md-6" style="border-right: solid 1px black;" >
             <div class="">
@@ -239,12 +212,10 @@ Name of student
   transition: 0.4s;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .accordion:hover {
   background-color: #ccc;
 }
 
-/* Style the accordion panel. Note: hidden by default */
 .panel {
   padding: 0 10px;
   background-color: white;
@@ -258,11 +229,8 @@ var i;
 
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
     this.classList.toggle("active");
 
-    /* Toggle between hiding and showing the active panel */
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
       panel.style.display = "none";
@@ -304,8 +272,9 @@ for (i = 0; i < acc.length; i++) {
 </div>
 </div>
 </div>
-</div>
 <br>
+</div>
+</div>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

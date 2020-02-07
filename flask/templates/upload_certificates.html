@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload Certificates</title>
+</head>
+<body>
+    <style>
+        .myMessage{
+            margin: 0;
+            font-weight: bold;
+        }
+    </style>
+    {% with messages= get_flashed_messages(with_categories=true) %}
+{%if messages%}
+    {% for category,message in messages%}
+    <div class="alert alert-{{category}} myMessage">
+        {{message}}
+    </div>
+    {%endfor%}
+{% endif %}
+{% endwith %}
+    <h1>Choose your files</h1>
+    <hr>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+    <hr>
+</body>
+</html>

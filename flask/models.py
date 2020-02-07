@@ -6,7 +6,7 @@ class StudentInfo(db.Model):
     year=db.Column(db.String(5),nullable=False)
     division=db.Column(db.String(1),nullable=False)
     mobile_number=db.Column(db.String(10),nullable=False)
-    name_of_student=db.Column(db.String(30),nullable=False)
+    name_of_student=db.Column(db.String(30),nullable=False) 
     name_of_parent_guardian=db.Column(db.String(30),nullable=False)
 
     pre_add_loc_add_hos_add=db.Column(db.String(150),nullable=False)

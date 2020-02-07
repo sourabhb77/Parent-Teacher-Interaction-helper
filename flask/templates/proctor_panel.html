@@ -77,6 +77,9 @@ background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
 <div class="container" style="background-color: white;">
 <div class="row"> 
 <div class="col-md-8" id="column-1">
+  <p style="width: 100%;background-color: #90d5ec;
+  background-image: linear-gradient(300deg, #90d5ec 74%, #fc575e 0%);
+  ;padding: 5px;text-align: center;margin-top: 5px;">Students</p>
     <div class="row">
         {% for i in pform %}
     <div class="card" style="width:33%;background-color: #ecf3f9;">
@@ -115,22 +118,67 @@ background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
     </div>
     </div>
     {% endfor %}
-    <script>
-      function showmail(mail){
-          // p=[];
-  //     var x = document.getElementsByClassName("");
-  //     p.push(x.textContent);
-      alert(mail);
-  
-  //     var t = document.getElementById("showmailid").textContent;
-  // var y = document.createTextNode(x.textContent);
-  
-  // t.appendChild(y);
-      }
-      // console.log(x.textContent)
-      </script>
 </div>
-
+<br>
+<div class="upload_section">
+  <p style="width: 100%;background-color: #90d5ec;
+  background-image: linear-gradient(300deg, #90d5ec 74%, #fc575e 0%);
+  ;padding: 5px;text-align: center;margin-top: 5px;">Upload Section</p>
+  <div class="row">
+    <div class="col-md-6 marks">
+      <p style="font-weight: bold;width:100%;text-align: center;">MARKS</p>
+      <div class="post">
+        <p class="title">Unit Test 1</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+      <br>
+      <div class="post">
+        <p class="title">Unit Test 2</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+      <br>
+      <div class="post">
+        <p class="title">End Semester</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-6 attendence">
+      <p style="font-weight: bold;width:100%;text-align: center;">ATTENDENCE</p>
+      <div class="post">
+        <p class="title">Unit Test 1</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+      <br>
+      <div class="post">
+        <p class="title">Unit Test 2</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+      <br>
+      <div class="post">
+        <p class="title">End Semester</p>
+        <form method=post enctype=multipart/form-data>
+          <input type=file name=file> 
+          <input type=submit value=Upload>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     
 </div>
 <div class="col-md-4" id="column-2" style="border-left: 1px solid black;">

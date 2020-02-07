@@ -18,13 +18,13 @@ app = Flask(__name__, static_folder='static')
 
 # for uploading certificates
 # UPLOAD_FOLDER = '\\home\\sourabh\\Desktop\\Parent-Teacher-Interaction-helper\\flask\\static\\certificates'
-UPLOAD_FOLDER ='/home/sourabh/Desktop/Parent-Teacher-Interaction-helper/flask/static/certificates'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg','pdf','docx'}
+# UPLOAD_FOLDER ='/home/sourabh/Desktop/Parent-Teacher-Interaction-helper/flask/static/certificates'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg','pdf','docx','doc'}
 PROFILE_ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # for profiles
-app.config['PROFILE']='D:\\pps\\flask\\static\\profiles'
+# app.config['PROFILE']='D:\\pps\\flask\\static\\profiles'
 
 app.config['SECRET_KEY']='abcde'
 
@@ -172,6 +172,7 @@ def register():
                 hash_pass=bcrypt.generate_password_hash(password).decode('utf-8')
                 db.session.add(User(id=id,password=hash_pass))
                 db.session.commit()
+                os.mkdir(str(app.static_folder+'/certificates/'+str(id)))
                 flash(f"Registerd for {id}",'success')
                 return redirect(url_for('login'))
         else:
@@ -306,7 +307,6 @@ def proctorForm():
         per_hsc_marks=request.form.get('per_hsc_marks')
         discipline=request.form.get('discipline')
         date=datetime.now().strftime("%x")
-        photo= current_user.id +".png"
         # photo=request.files['photo'].read()
         # for profile photo
         file = request.files['file']
@@ -324,6 +324,7 @@ def proctorForm():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.static_folder+"/profiles", filename))
         # end profile photo
+        photo=filename
         db.session.add(PtrForm(id=id,year_of_admission=year_of_admission,branch=branch,year=year,division=division,mobile_number=mobile_number,name_of_proctor=name_of_proctor,email_of_proctor=email_of_proctor,mobile_number_of_proctor=mobile_number_of_proctor,name_of_student=name_of_student,name_of_parent_guardian=name_of_parent_guardian,pre_add_loc_add_hos_add=pre_add_loc_add_hos_add,parent_pre_add_loc_add_hos_add=parent_pre_add_loc_add_hos_add,nav_place_permt_add=nav_place_permt_add,residential=residential,office=office,ptr_mobile_number=ptr_mobile_number,stu_email_id=stu_email_id,prt_email_id=prt_email_id,blood_group=blood_group,any_disease_disability=any_disease_disability,date_of_birth=date_of_birth,place_of_birth=place_of_birth,mother_tongue=mother_tongue,religion=religion,exam=exam,score=score,per_ssc_marks=per_ssc_marks,per_hsc_marks=per_hsc_marks,discipline=discipline,date=date,photo=photo))
         db.session.commit()
         flash(f"{id} submited proctorform",'success')
@@ -343,20 +344,20 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route("/display")
-def display():
-    # logout_user()
-    form=IntForm.query.filter_by(id='1814013').first()
+# @app.route("/display")
+# def display():
+#     # logout_user()
+#     form=IntForm.query.filter_by(id='1814013').first()
 
-    return render_template('display_internship_form.html',form=form)
+#     return render_template('display_internship_form.html',form=form)
 
-@app.route("/displayForProctor")
-def displayForProctor():
-    x=PtrForm.query.all()
-    imgdict={}
-    for i in x:
-        imgdict[i.id]= BytesIO(PtrForm.query.filter_by(id=i.id).first().photo)
-    return render_template('display_for_proctor.html',imgdict=imgdict,x=x)
+# @app.route("/displayForProctor")
+# def displayForProctor():
+#     x=PtrForm.query.all()
+#     imgdict={}
+#     for i in x:
+#         imgdict[i.id]= BytesIO(PtrForm.query.filter_by(id=i.id).first().photo)
+#     return render_template('display_for_proctor.html',imgdict=imgdict,x=x)
 
 
 @app.route("/drop")
@@ -458,7 +459,7 @@ def studentpanel():
 
 @app.route('/uploads/<path:filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.static_folder, filename)
+    return send_from_directory(str(app.static_folder + '/certificates/'+ str(current_user.id)+'/'), filename)
 
 
 @app.route("/deleteiform")
@@ -533,11 +534,9 @@ def upload_file():
             filename = secure_filename(file.filename)
             db.session.add(User_certi(fname=filename,owner=current_user))
             db.session.commit()
-            file.save(os.path.join(app.static_folder+"/certificates", filename))
-            # return redirect(url_for('uploaded_file',filename=filename))
+            file.save(os.path.join(str(app.static_folder + '/certificates/'+ str(current_user.id)+'/'), filename))
             flash("Document saved",'success')
-            return redirect(request.url)
-            
+            return redirect(url_for('studentpanel'))
     return render_template('upload_certificates.html')
 
 

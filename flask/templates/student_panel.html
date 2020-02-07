@@ -141,8 +141,7 @@ background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
           {{k.fname}}
         </div>
         <div class="col-md-2">
-          {% set show_cert="certificates/" + k.fname %}
-          <a href="{{url_for('uploaded_file',filename=show_cert)}}"><button class="btn btn-primary" >Show</button></a>
+          <a href="{{url_for('uploaded_file',filename=k.fname)}}" target="_blank"><button class="btn btn-primary" >Show</button></a>
         </div>
       </div>
       {% endfor %}
