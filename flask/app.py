@@ -34,8 +34,8 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT='465',
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='proctorsoft@gmail.com',
-    MAIL_PASSWORD='dsmddsmd'
+    MAIL_USERNAME='mail id here',
+    MAIL_PASSWORD='password here'
 )
 mail=Mail(app)
 s=URLSafeTimedSerializer('abcde')
