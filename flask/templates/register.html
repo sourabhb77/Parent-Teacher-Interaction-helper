@@ -7,9 +7,6 @@
       
       <style type="text/css">
         #full_except_logo{
-            /* background-image: url(img/background-1.jpg); */
-            /* background-image: url({{url_for('static',filename='img/background-1.jpg')}}); */
-            /* background:linear-gradient(135deg, rgb(59, 72, 175) 0%, rgb(59, 72, 175) 31%,rgb(55, 66, 150) 31%, rgb(55, 66, 150) 46%,rgb(51, 60, 126) 46%, rgb(51, 60, 126) 56%,rgb(48, 54, 101) 56%, rgb(48, 54, 101) 83%,rgb(44, 48, 77) 83%, rgb(44, 48, 77) 93%,rgb(40, 42, 52) 93%, rgb(40, 42, 52) 100%) */
             background-color: #7f53ac;
 background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
         }
@@ -36,8 +33,7 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
         <div class="shadow-lg  bg-white " id="navbar" >
           <nav class="shadow-lg navbar navbar-expand-lg navbar-light  " id="navbarblue" style="height: 60px;
           width: 100%;" align=center>
-          <!-- <img class="icon" src=""> -->
-      <a class="navbar-brand"  href="{{url_for('login')}}" style="color:white ;font-weight: 1000;a>ho">Student-Proctor-Software</a>
+      <a class="navbar-brand"  href="{{url_for('login')}}" style="color:white ;font-weight: 1000;"/>Student-Proctor-Software</a>
     </nav>
     </div>   
     
@@ -46,13 +42,8 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
     
     
     <div id="back">
-<!--    <img src="img/KJSCE-Mumbai-Logo.png">-->
-    
-
     <div class="container" id="cont">
 
-    <!-- <div class="py-5"></div> -->
-    <!-- <div class="py-5"></div> -->
     <div class="page-holder d-flex align-items-center">
  <div class="container">
         <div class="row align-items-center py-5" align=center>
@@ -120,15 +111,6 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
     </div>
       </div>
 
-    
-    <!-- JavaScript files
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="js/front.js"></script> -->
      <script>
 
           
@@ -138,10 +120,7 @@ window.onscroll = function() {myFunction()};
 // Get the navbar
 var navbar = document.getElementById("navbar");
 
-// Get the offset position of the navbar
 var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
 function myFunction() {
   if (window.pageYOffset >= sticky) {
     navbar.classList.add("sticky")

@@ -5,8 +5,6 @@
 {% block content %}
 <style type="text/css">
 #bgg {
-    /* background-image: url(img/light-blue-navbar.jpg); */
-    /* background-image: url({{url_for('static',filename='img/light-blue-navbar.jpg')}}); */
 background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(157.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 215,0.2) 16.667%,rgba(97, 146, 200,0.2) 16.667%, rgba(97, 146, 200,0.2) 33.334%,rgba(96, 168, 193,0.2) 33.334%, rgba(96, 168, 193,0.2) 50.001%,rgba(98, 80, 222,0.2) 50.001%, rgba(98, 80, 222,0.2) 66.668%,rgba(99, 58, 229,0.2) 66.668%, rgba(99, 58, 229,0.2) 83.335%,rgba(97, 124, 207,0.2) 83.335%, rgba(97, 124, 207,0.2) 100.002%),linear-gradient(90deg, rgb(36, 121, 196),rgb(136, 50, 37));
     background-size: cover;
 }
@@ -126,9 +124,7 @@ background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 21
             <div class="col-sm-12">
                 <div class="form-group row">
                     <div class="col-sm-6">
-                    <!-- {{form.student_name.label(class="form-control-label")}} -->
                     <p class="form-control-label">name of student</p>
-                <!-- {{ form.student_name(class="form-control",id="inputPassword")}} -->
                 <p class="form-control",id="inputPassword">
                     {{ pform.name_of_student}}
 
@@ -136,9 +132,7 @@ background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 21
                     </div>
 
                     <div class="col-sm-6 ">
-                    <!-- {{form.id.label(class="form-control-label")}} -->
                     <p form-control-label>Roll number</p>
-                <!-- {{ form.id(class="form-control",id="inputPassword")}} -->
                 <p class="form-control",id="inputPassword">
 
                     {{ pform.id}}
@@ -233,9 +227,7 @@ background: linear-gradient(22.5deg, rgba(98, 102, 215,0.2) 0%, rgba(98, 102, 21
         <div class="col-sm-12">
             <div class="form-group row">
                 <div class="col-sm-3 form-control-label">
-                    <!-- <p class="form-control-label"> -->
                             Name of parent/guardian
-                    <!-- </p> -->
                 </div>
                 <div class="col-sm-9 form-control" id="inputPassword">
                     {{pform.name_of_parent_guardian}}

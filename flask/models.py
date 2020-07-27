@@ -1,3 +1,4 @@
+# not used all models
 class StudentInfo(db.Model):
     id=db.Column(db.String(7),primary_key=True)
     parent_id=db.Column

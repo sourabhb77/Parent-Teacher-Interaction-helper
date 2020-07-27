@@ -14,7 +14,6 @@ class LoginForm(FlaskForm):
     id= StringField('Username',validators=[DataRequired(),Length(min=2,max=7)])
     password =PasswordField('Password',validators=[DataRequired()])
     submit =SubmitField('Log In')
-    # po=RadioField('khjf')
 
 class InternshipForm(FlaskForm):
     internship_announcement_number= StringField('Internship Applied As per College Intership announcement number:',validators=[DataRequired(),Length(min=1,max=7)])
@@ -61,14 +60,9 @@ class InternshipForm(FlaskForm):
 
     division= SelectField('Division',choices=[(1,'A'),(2,'B')])
 
-    # same_as_student= BooleanField('Same as student',validators=[DataRequired()])
-
     period= SelectField('Period',choices=[(1,"Summer"),(2,"Winter")])
 
     year_of_internship= SelectField('Year',choices=[(1,"2019"),(2,"2020"),(3,"2021"),(4,"2022")])
-    # year_admission= SelectField('Year',choices=[(1,"2019"),(2,"2020"),(3,"2021"),(4,"2022")])
-
-    # year_admission=SelectField('Year of admission',choices=[(1,'2016-2017'),(2,'2017-2018'),(3,'2018-2019'),(4,'2019-2020')])
 
     duration= StringField('Duration',validators=[DataRequired()])
 
@@ -77,7 +71,6 @@ class InternshipForm(FlaskForm):
     to_time= DateField('To',validators=[DataRequired()],format="'%m/%d/%Y'")
 
     todays_date= DateField('Today\'s date',validators=[DataRequired()],format="'%m/%d/%Y'")
-    # delete_photo =SubmitField('Delete photo')s
 
     submit_form= SubmitField('Send Email to confirm')
 
@@ -86,12 +79,9 @@ class InternshipForm(FlaskForm):
 class ProctorForm(FlaskForm):
     #zero block
     year_of_admission=SelectField('Year of admission',choices=[(1,'2016-2017'),(2,'2017-2018'),(3,'2018-2019'),(4,'2019-2020')])
-    # branch=SelectField('Branch',choices=['C.S','I.T.','EXTC','MECH','ETRX'])
     branch= SelectField('Branch',choices=[(1,'Comp'),(2,'IT'),(3,'EXTC'),(4,'MECH')])
-    # year=RadioField('Year',choices=['F.Y','S.Y','T.Y','B.E'])
     year= SelectField('Year',choices=[(1,'F.Y.'),(2,'S.Y.'),(3,'T.Y.'),(4,'L.Y.')])
 
-    # division= StringField('Division',validators=[ DataRequired(),Length(1)])
     division= SelectField('Division',choices=[(1,'A'),(2,'B')])
 
     id= StringField('Roll number',validators=[ DataRequired(),Length(7)])
@@ -108,7 +98,6 @@ class ProctorForm(FlaskForm):
     # second block
     pre_add_loc_add_hos_add=StringField('Present Address/Local Address/Hostel Address',validators=[DataRequired(),Length(min=50,max=150)])
     parent_pre_add_loc_add_hos_add=StringField('Present Address/Local Address/Hostel Address of parents',validators=[DataRequired(),Length(min=50,max=150)])
-    # same_as_student=BooleanField('Same as student',validators=[DataRequired()])
     nav_place_permt_add=StringField('Native Place/Permanent Address',validators=[DataRequired(),Length(min=50,max=300)])
     residential=StringField('Residential',validators=[DataRequired(),Length(min=2,max=10)])
     office=StringField('Office',validators=[DataRequired(),Length(min=2,max=10)])
@@ -136,7 +125,6 @@ class ProctorForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()], format="'%m-%d-%y'")
 
     # photo section
-    # photo=FileField(validators=[FileRequired()])
     photo=StringField('photo',validators=[DataRequired(),Length(min=2,max=20)])
     #submit button
     submit=SubmitField('Submit Form')

@@ -1,94 +1,100 @@
 {% extends 'base.html' %}
-{% block title %} Login {% endblock title %} 
+{% block title %} Login {% endblock title %}
 
 
 {% block content %}
 <style type="text/css">
-  #full_except_logo{
-      /* background-image: url({{url_for('static',filename='img/background-1.jpg')}}); */
-      /* background:linear-gradient(135deg, rgb(59, 72, 175) 0%, rgb(59, 72, 175) 31%,rgb(55, 66, 150) 31%, rgb(55, 66, 150) 46%,rgb(51, 60, 126) 46%, rgb(51, 60, 126) 56%,rgb(48, 54, 101) 56%, rgb(48, 54, 101) 83%,rgb(44, 48, 77) 83%, rgb(44, 48, 77) 93%,rgb(40, 42, 52) 93%, rgb(40, 42, 52) 100%) */
-      background-color: #7f53ac;
-background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  #full_except_logo {
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
   }
-  #navbarblue{
-       background-image: url({{url_for('static',filename='img/light-blue-navbar.jpg')}});
 
-    background-size: cover;
+  #navbarblue {
+    background-image: url({{ url_for('static',filename='img/light-blue-navbar.jpg')}});
+
+  background-size: cover;
   }
-  
-  #logo_back{
-                    background-color: #7f53ac;
-background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
-                }
+
+  #logo_back {
+    background-color: #7f53ac;
+    background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
+  }
 </style>
-     
- <!-- </header>  -->
-  <header class="header">  
-      <div align=center id="logo_back">
-          <img src="{{url_for('static' ,filename='img/KJSCE-Mumbai-Logo.png')}}">
-          
-      </div>     
-        <div class="shadow-lg  bg-white " id="navbar">
-      <nav class="shadow-lg navbar navbar-expand-lg navbar-light  " id="navbarblue" style="height: 60px;
+
+<!-- </header>  -->
+<header class="header">
+  <div align=center id="logo_back">
+    <img src="{{url_for('static' ,filename='img/KJSCE-Mumbai-Logo.png')}}">
+
+  </div>
+  <div class="shadow-lg  bg-white " id="navbar">
+    <nav class="shadow-lg navbar navbar-expand-lg navbar-light  " id="navbarblue" style="height: 60px;
       width: 100%;">
-        <a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Student-Proctor-Software</a>
+      <a class="navbar-brand" href="#" style="color:white ;font-weight: 1000">Student-Proctor-Software</a>
 
-      </nav>
+    </nav>
 
-      </div>
-    
-  </header>
-    
+  </div>
+
+</header>
+
 <div id="full_except_logo">
-    <div id="back">
+  <div id="back">
     <div class="container" id="cont">
-    <div class="py-5"></div>
-    <div class="py-5"></div>
-    
-    <div class="col-md-12 row">
-    <div class="col-md-8"  id="first">
-        <div class=" info rounded my-3" id="info-3" style="border: solid black 1px;padding: 10px">
-            <div class="font-weight-bold center" align=center font-size-25>
-            <h3>About K.J Somaiya College of Engineering<br></h3>
-            </div>
-            
-            <p style="color: white;">
-              The K. J. Somaiya College of Engineering (KJSCE) was established in 1983 at Somaiya Vidyavihar, and affiliated with the University of Mumbai. It offers 4 year bachelors degree courses in the departments of Electronics Engineering, Electronics and Telecommunications Engineering, Computer Engineering, Information Technology and Mechanical Engineering. KJSCE is an Autonomous college affiliated to the University of Mumbai spread across approx. 65 acres of posh land and stands among the top 3 engineering colleges in Mumbai.
-            </p>
-	      </div>
-	        <div  class="rounded" style="border: solid black 1px;padding: 10px;">
+      <div class="py-5"></div>
+      <div class="py-5"></div>
 
-            <div class="font-weight-bold mt-1 center" align=center >
+      <div class="col-md-12 row">
+        <div class="col-md-8" id="first">
+          <div class=" info rounded my-3" id="info-3" style="border: solid black 1px;padding: 10px">
+            <div class="font-weight-bold center" align=center font-size-25>
+              <h3>About K.J Somaiya College of Engineering<br></h3>
+            </div>
+
+            <p style="color: white;">
+              The K. J. Somaiya College of Engineering (KJSCE) was established in 1983 at Somaiya Vidyavihar, and
+              affiliated with the University of Mumbai. It offers 4 year bachelors degree courses in the departments of
+              Electronics Engineering, Electronics and Telecommunications Engineering, Computer Engineering, Information
+              Technology and Mechanical Engineering. KJSCE is an Autonomous college affiliated to the University of
+              Mumbai spread across approx. 65 acres of posh land and stands among the top 3 engineering colleges in
+              Mumbai.
+            </p>
+          </div>
+          <div class="rounded" style="border: solid black 1px;padding: 10px;">
+
+            <div class="font-weight-bold mt-1 center" align=center>
               <h3>About this project<br></h3>
             </div>
-            
+
             <p style="color: white;">
-              This website will allow students to easily submit forms like internship form, proctor form, leave application, etc.<br>
+              This website will allow students to easily submit forms like internship form, proctor form, leave
+              application, etc.<br>
               The proctor will recieve the form once you press submit.
               <br><br>
               The proctor can view student information and all the forms submitted by the student.
             </p>
           </div>
           <br>
-	        <div  class="rounded" style="border: solid black 1px;padding: 10px;">
+          <div class="rounded" style="border: solid black 1px;padding: 10px;">
             <div class="font-weight-bold center rounded" align=center font-size-25>
-            <h3>About the team<br></h3>
+              <h3>About the team<br></h3>
             </div>
             <p style="color: white;">
 
-              Proctor management system is developed by the following students of Second Year Information Technology branch, KJSCE.<br>
+              Proctor management system is developed by the following students of Second Year Information Technology
+              branch, KJSCE.<br>
               1)Mayuresh<br>2)Dhruv<br>3)Sourabh<br>4)Dev<br>
             </p>
           </div>
           <br>
-        
-    </div>
-       <div class="col-md-4">
-           <div class=" px-lg-4  py-5" id="loginbox" align=center>
+
+        </div>
+        <div class="col-md-4">
+          <div class=" px-lg-4  py-5" id="loginbox" align=center>
             <h1 class="text-base text-primary text-uppercase mb-4" align=center>Welcome</h1>
             <h2 class="mb-4">LOGIN</h2>
             <p class="text-muted">Enter the following details to access data:</p>
-            
+
             <form id="loginForm" method="POST" action="/login" enctype="multipart/form-data" class="mt-4">
               <div class="form-group mb-4">
                 {{form.id.label(class="table-control-label")}}
@@ -99,59 +105,45 @@ background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%);
                 {{ form.password(class="form-control border border-dark shadow form-control-lg ")}}
               </div>
               {{ form.submit(class="btn btn-primary px-5")}}
-              
+
             </form>
             <div align=center>
-                <br>
-                <p class="text">If new please register
-                  <span>
-                    <a href="{{url_for('register')}}" id="register_button" class="btn btn-md active" role="button" aria-pressed="true" style="color: black; text-decoration-line: underline;font-size: 15px;">Here</a>
-                  </span>
-                </p>
+              <br>
+              <p class="text">If new please register
+                <span>
+                  <a href="{{url_for('register')}}" id="register_button" class="btn btn-md active" role="button"
+                    aria-pressed="true" style="color: black; text-decoration-line: underline;font-size: 15px;">Here</a>
+                </span>
+              </p>
             </div>
-            
+
           </div>
-           
-           
-           
-       </div>
-       
         </div>
-    
-    
-    
-    
-   
-    
-   
-    
-        
-        <p class="mt-5 mb-0 text-gray-400 text-center">
-        Designed by Team DSMD!
-        </p>
-        <br>
-    </div>
-    </div>
+
       </div>
+     <p class="mt-5 mb-0 text-gray-400 text-center">
+        Designed by Team DSMD!
+      </p>
+      <br>
     </div>
-    <script>
-          
-          // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
+  </div>
+</div>
+</div>
+<script>
+  // When the user scrolls the page, execute myFunction
+  window.onscroll = function () {
+    myFunction()
+  };
 
-// Get the navbar
-var navbar = document.getElementById("navbar");
+  var navbar = document.getElementById("navbar");
 
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
+  var sticky = navbar.offsetTop;
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
   }
-}
-             </script> 
+</script>
 {% endblock content %}

@@ -13,19 +13,9 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
 
-# app=Flask(__name__)
 app = Flask(__name__, static_folder='static')
-
-# for uploading certificates
-# UPLOAD_FOLDER = '\\home\\sourabh\\Desktop\\Parent-Teacher-Interaction-helper\\flask\\static\\certificates'
-# UPLOAD_FOLDER ='/home/sourabh/Desktop/Parent-Teacher-Interaction-helper/flask/static/certificates'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg','pdf','docx','doc'}
 PROFILE_ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-# for profiles
-# app.config['PROFILE']='D:\\pps\\flask\\static\\profiles'
-
 app.config['SECRET_KEY']='abcde'
 
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
@@ -153,9 +143,7 @@ def register():
     if current_user.is_authenticated:
         return "you are already authiticated"
     form = RegistrationForm()
-    # if form.validate_on_submit():
     if request.method == "POST":
-        # if form.validate_on_submit():
         id=request.form.get('id')
         if id[0]=='s' or id[0]=='p' or id[0]=='g':
             password=request.form.get('password')
@@ -218,9 +206,6 @@ def internshipForm():
 
     already_existed_user=IntForm.query.filter_by(id=current_user.id).first()
     if already_existed_user != None:
-        # pform=PtrForm.query.filter_by(id=current_user.id).first()
-        # iform=already_existed_user
-        # return render_template('display_internship_form.html',iform=iform,form=form,pform=pform) 
         return redirect(url_for("displayiform"))
     form=InternshipForm()
     form.todays_date = datetime.now().strftime("%x")
@@ -342,23 +327,6 @@ def profile_allowed_file(filename):
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-
-# @app.route("/display")
-# def display():
-#     # logout_user()
-#     form=IntForm.query.filter_by(id='1814013').first()
-
-#     return render_template('display_internship_form.html',form=form)
-
-# @app.route("/displayForProctor")
-# def displayForProctor():
-#     x=PtrForm.query.all()
-#     imgdict={}
-#     for i in x:
-#         imgdict[i.id]= BytesIO(PtrForm.query.filter_by(id=i.id).first().photo)
-#     return render_template('display_for_proctor.html',imgdict=imgdict,x=x)
-
 
 @app.route("/drop")
 def drop():
